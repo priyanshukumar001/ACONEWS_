@@ -1,0 +1,175 @@
+/* Container for the cards */
+.card-space {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2em;
+    justify-content: center;
+    padding: 1.2em;
+    /* border: 2px solid black; */
+    width: 68%;
+    float: left;
+}
+
+/* Individual card styling */
+.cards {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: 300px;
+    cursor: pointer;
+}
+
+.cards:hover {
+    transform: translateY(-10px);
+}
+
+/* Image styling */
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-texts {
+    flex: 1;
+    padding: 1em;
+    position: relative;
+    /* border: 1px solid black; */
+}
+
+/* Title styling */
+.card-title {
+    font-size: 1.5em;
+    margin: 0 0 0.8em 0;
+    color: #333;
+}
+
+/* Description styling */
+.card-description {
+    font-size: 1em;
+    color: #666;
+}
+
+.card-source,
+.card-time {
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 0px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-time {
+    margin-left: 0.5em;
+}
+
+.mini-texts {
+    position: absolute;
+    bottom: 5px;
+    overflow: hidden;
+}
+
+
+/* css for page navigation buttons */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    padding: 1.2em;
+    margin: 1.2em auto;
+    max-width: 1200px;
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.page-number {
+    margin-top: 1em;
+}
+
+.pagination button {
+    width: 7em;
+    text-align: center;
+    background-color: #0ab7fb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+.pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+
+@media (max-width: 768px) {
+    .card-space {
+        float: none;
+        width: 100%;
+    }
+
+    .cards {
+        width: 100%;
+    }
+
+    .card-img {
+        height: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-space {
+        padding: 0.2em;
+    }
+
+    .card-texts {
+        padding: 0.5em
+    }
+
+    .card-title {
+        font-size: 1em;
+        margin-bottom: 2em;
+    }
+
+    .card-description {
+        display: none;
+    }
+
+    .card-source,
+    .card-time {
+        font-size: 0.6em;
+    }
+
+    .page-container {
+        padding: 0.8em;
+        margin: 0.8em auto;
+    }
+
+    .pagination button {
+        padding: 0.8em 1em;
+        margin: 0 3px;
+    }
+}

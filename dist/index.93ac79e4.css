@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.back-button {
+  color: #0ab7fb;
+  text-align: center;
+  cursor: pointer;
+  background-color: #b6b4b480;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2em;
+  font-weight: 999;
+  line-height: 0;
+  position: absolute;
+  top: -5px;
+  left: 10px;
+}
+
+@media (width <= 768px) {
+  .back-button {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    top: 1em;
+  }
+}
+/*# sourceMappingURL=index.93ac79e4.css.map */
