@@ -12,7 +12,7 @@ pagination.post('/', async (req, res) => {
     const { q, category, lang, country, from, to, max = 100, page = 1, sortby } = req.body;
     console.log(q, category, lang, country, from, to, sortby);
     const response = await fetch(`${BASE_URL}/search?${new URLSearchParams({
-      q: q || '',
+      q: q || 'general',
       category: category || '',
       lang: lang || 'en',
       country: country || 'us',
@@ -38,10 +38,7 @@ pagination.post('/', async (req, res) => {
       articles: paginatedArticles,
     });
 
-    // Temp.savedArticles = { data: "new data" };
-    // console.log(Temp.savedArticles);
-    // res.json(Temp?.savedArticles);
-
+    console.log("Required Page is Sent");
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Failed to fetch news articles' });

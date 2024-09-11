@@ -12,7 +12,7 @@ news.post('/', async (req, res) => {
         const { q, category, lang, country, max, sortby } = req.body;
         console.log(q, category, lang, country, max, sortby);
         const response = await fetch(`${BASE_URL}/search?${new URLSearchParams({
-            q: q || 'TOP AND HEADLINES',
+            q: q || 'TOP OR HEADLINES',
             category: category || 'general',
             lang: lang || 'en',
             country: country || 'us',
@@ -24,8 +24,7 @@ news.post('/', async (req, res) => {
         const data = await response.json();
         res.json(data);
         // console.log(data);
-        // res.json(Temp?.savedArticles);
-        // console.log(Temp?.savedArticles);
+        console.log("News feed sent");
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Failed to fetch news articles' });

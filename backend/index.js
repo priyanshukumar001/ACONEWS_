@@ -3,7 +3,6 @@ import newsRoutes from './api/newsRoute.js';
 import paginationRoutes from './api/paginationRoute.js';
 import searchRoutes from './api/searchRoute.js';
 import cors from 'cors';
-import functions from 'firebase-functions';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,8 +11,26 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 //Middleware to handle cors error
+
+
+const allowedOrigins = [
+    'https://aconews-a4671.web.app',
+    'http://localhost:1234',
+];
+
 app.use(cors({
-    origin: 'http://localhost:1234', // Your frontend's origin //need to be updated
+    origin: function (origin, callback) {
+        try {
+            if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        } catch (error) {
+            console.error('Error in CORS origin function:', error);
+            callback(new Error('Internal Server Error'));
+        }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
@@ -26,5 +43,3 @@ app.use('/api/search', searchRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-exports.api = functions.https.onRequest(app);
