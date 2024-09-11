@@ -5,9 +5,9 @@
     gap: 1.2em;
     justify-content: center;
     padding: 1.2em;
-    /* border: 2px solid black; */
     width: 68%;
     float: left;
+    /* border: 1px solid black; */
 }
 
 /* Individual card styling */
@@ -21,6 +21,7 @@
     transition: transform 0.2s;
     width: 300px;
     cursor: pointer;
+    /* border: 1px solid black; */
 }
 
 .cards:hover {

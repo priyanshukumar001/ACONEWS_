@@ -3,6 +3,7 @@ import { useFeed, useSearch } from "../../config/globalVariable";
 import '../../public/static/css/Card.css'
 import formatDate from "../../config/formatDate";
 import { useState, useEffect } from "react";
+import CardSkeletal from "./CardSkeletal";
 
 
 
@@ -68,7 +69,7 @@ const Cards = ({ type }) => {
     return (
         <div className="card-space">
             {getCurrentPageArticles()?.map((article, index) => (
-                <div className="cards" key={index} onClick={() => navigate(`${type === '/' ? '' : '/search'}/${index}`)}>
+                <div className="cards" key={index} onClick={() => navigate(`${type === '/' ? '' : '/search'}/${(currentPage - 1) * articlesPerPage + index}`)}>
                     <img className="card-img" src={article?.image} alt={article?.title} />
                     <div className="card-texts">
                         <h2 className="card-title">{article?.title}</h2>

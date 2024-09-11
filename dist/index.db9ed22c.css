@@ -1,3 +1,55 @@
+.s-cards {
+  width: 200px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.s-cards:before {
+  content: "";
+  z-index: 10;
+  background: linear-gradient(120deg, #fff0 0%, #ffffff80 50%, #fff0 100%);
+  width: 200%;
+  height: 100%;
+  animation: 2s infinite shine;
+  position: absolute;
+  top: 0;
+  left: -100%;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  50% {
+    left: 100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+.s-img {
+  background-color: #d0cdcd80;
+  min-height: 200px;
+}
+
+.s-title {
+  background-color: #d0cdcd80;
+  border-radius: 1em;
+  width: 80%;
+  height: 20px;
+}
+
+.s-description {
+  background-color: #d0cdcd80;
+  border-radius: 1em;
+  width: 80%;
+  height: 40px;
+}
+
 .navbar {
   flex-direction: column;
   align-items: center;

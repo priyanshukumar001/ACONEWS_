@@ -41,7 +41,7 @@ const Search = () => {
 
     // defining elements of parameters
     const params = {
-        q: query,
+        q: query || 'general',
         category: category,
         lang: lang,
         country: country,

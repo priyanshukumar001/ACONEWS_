@@ -27258,46 +27258,47 @@ var _globalVariable = require("../config/globalVariable");
 var _s = $RefreshSig$();
 const App = ()=>{
     _s();
+    const [feed, setFeed] = (0, _globalVariable.useFeed)();
     const [searched, setSearched] = (0, _globalVariable.useSearch)();
     const location = (0, _reactRouterDom.useLocation)();
-    const hideNavPaths = [
-        /^\/\d+$/,
-        /^\/search\/\d+$/
-    ];
-    const HideNavigation = hideNavPaths.some((path)=>path.test(location.pathname)) && searched && searched.length > 0;
+    let HideNavigation = false;
+    const isFeedPath = location.pathname.match(/^\/\d+$/) && feed?.length > 0;
+    const isSearchPath = location.pathname.match(/^\/search\/\d+$/) && searched?.length > 0;
+    if (isFeedPath || isSearchPath) HideNavigation = true;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _scrollToTopDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 22,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, undefined),
                 !HideNavigation && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 23,
+                    lineNumber: 32,
                     columnNumber: 37
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 24,
+                    lineNumber: 33,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _categoryDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 25,
+                    lineNumber: 34,
                     columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/App.js",
-            lineNumber: 21,
+            lineNumber: 30,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
 };
-_s(App, "kNK200VxL4UIvADgX1mhBcDs4Jk=", false, function() {
+_s(App, "iTVYRNs2wCVOlqn6ceYHSeSX1uw=", false, function() {
     return [
+        (0, _globalVariable.useFeed),
         (0, _globalVariable.useSearch),
         (0, _reactRouterDom.useLocation)
     ];
@@ -27308,7 +27309,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
         path: "/",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 34,
+            lineNumber: 43,
             columnNumber: 18
         }, undefined),
         children: [
@@ -27316,7 +27317,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 38,
+                    lineNumber: 47,
                     columnNumber: 26
                 }, undefined),
                 children: [
@@ -27324,7 +27325,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                         path: "",
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _newsFeedDefault.default), {}, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 42,
+                            lineNumber: 51,
                             columnNumber: 34
                         }, undefined),
                         children: [
@@ -27334,7 +27335,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 46,
+                                    lineNumber: 55,
                                     columnNumber: 42
                                 }, undefined)
                             },
@@ -27344,7 +27345,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 50,
+                                    lineNumber: 59,
                                     columnNumber: 42
                                 }, undefined)
                             }
@@ -27354,7 +27355,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                         path: "search",
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchedResultsDefault.default), {}, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 56,
+                            lineNumber: 65,
                             columnNumber: 34
                         }, undefined),
                         children: [
@@ -27364,7 +27365,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/search"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 60,
+                                    lineNumber: 69,
                                     columnNumber: 42
                                 }, undefined)
                             },
@@ -27374,7 +27375,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/search"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 64,
+                                    lineNumber: 73,
                                     columnNumber: 42
                                 }, undefined)
                             }
@@ -27387,7 +27388,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
     {
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorPageDefault.default), {}, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 74,
+            lineNumber: 83,
             columnNumber: 23
         }, undefined)
     }
@@ -34568,18 +34569,20 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouterDom = require("react-router-dom");
+var _cardSkeletal = require("./CardSkeletal");
+var _cardSkeletalDefault = parcelHelpers.interopDefault(_cardSkeletal);
 const Body = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 8,
+                lineNumber: 9,
                 columnNumber: 17
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/Body.js",
-            lineNumber: 7,
+            lineNumber: 8,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
@@ -34594,7 +34597,103 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"km3Ru":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","./CardSkeletal":"7NgqF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7NgqF":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d358 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d358.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _cardSkeletalCss = require("../../public/static/css/CardSkeletal.css");
+const CardSkeletal = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "card-space",
+            children: new Array(6).fill(0).map((_, idx)=>{
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "s-cards cards",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            className: "s-img card-img "
+                        }, void 0, false, {
+                            fileName: "src/components/CardSkeletal.js",
+                            lineNumber: 12,
+                            columnNumber: 33
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "card-texts",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    className: "card-title s-title"
+                                }, void 0, false, {
+                                    fileName: "src/components/CardSkeletal.js",
+                                    lineNumber: 14,
+                                    columnNumber: 37
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                                    className: "card-description s-description"
+                                }, void 0, false, {
+                                    fileName: "src/components/CardSkeletal.js",
+                                    lineNumber: 15,
+                                    columnNumber: 37
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mini-texts",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "card-source"
+                                        }, void 0, false, {
+                                            fileName: "src/components/CardSkeletal.js",
+                                            lineNumber: 17,
+                                            columnNumber: 41
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "card-time"
+                                        }, void 0, false, {
+                                            fileName: "src/components/CardSkeletal.js",
+                                            lineNumber: 18,
+                                            columnNumber: 41
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/CardSkeletal.js",
+                                    lineNumber: 16,
+                                    columnNumber: 37
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/CardSkeletal.js",
+                            lineNumber: 13,
+                            columnNumber: 33
+                        }, undefined)
+                    ]
+                }, idx, true, {
+                    fileName: "src/components/CardSkeletal.js",
+                    lineNumber: 11,
+                    columnNumber: 29
+                }, undefined);
+            })
+        }, void 0, false, {
+            fileName: "src/components/CardSkeletal.js",
+            lineNumber: 6,
+            columnNumber: 13
+        }, undefined)
+    }, void 0, false);
+};
+_c = CardSkeletal;
+exports.default = CardSkeletal;
+var _c;
+$RefreshReg$(_c, "CardSkeletal");
+
+  $parcel$ReactRefreshHelpers$d358.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","../../public/static/css/CardSkeletal.css":"1frv7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1frv7":[function() {},{}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -34885,7 +34984,7 @@ const Search = ()=>{
     const navigate = (0, _reactRouterDom.useNavigate)();
     // defining elements of parameters
     const params = {
-        q: query,
+        q: query || "general",
         category: category,
         lang: lang,
         country: country,
@@ -35770,7 +35869,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _dotenv = require("dotenv");
 var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
 (0, _dotenvDefault.default).config();
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://aconews-backend.vercel.app";
 const fetchNews = async (type, params, setArticles)=>{
     const subRoot = type === "trends" ? "news" : "search";
     try {
@@ -35786,6 +35885,7 @@ const fetchNews = async (type, params, setArticles)=>{
         // console.log(data);
         setArticles(data.articles);
     } catch (error) {
+        setArticles(undefined);
         console.error("Error fetching data:", error);
     }
 };
@@ -74536,12 +74636,18 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouterDom = require("react-router-dom");
 var _globalVariable = require("../../config/globalVariable");
+var _cardSkeletal = require("./CardSkeletal");
+var _cardSkeletalDefault = parcelHelpers.interopDefault(_cardSkeletal);
 var _s = $RefreshSig$();
 const SearchedResults = ()=>{
     _s();
     const [searched, setSearched] = (0, _globalVariable.useSearch)();
-    console.log(searched);
-    return searched === undefined || searched === "" || searched && searched.length == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    // console.log(searched);
+    return searched?.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardSkeletalDefault.default), {}, void 0, false, {
+        fileName: "src/components/SearchedResults.js",
+        lineNumber: 9,
+        columnNumber: 39
+    }, undefined) : searched === undefined ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "suggestion",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -74566,12 +74672,12 @@ const SearchedResults = ()=>{
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
             fileName: "src/components/SearchedResults.js",
-            lineNumber: 18,
-            columnNumber: 13
+            lineNumber: 14,
+            columnNumber: 15
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/SearchedResults.js",
-        lineNumber: 17,
+        lineNumber: 14,
         columnNumber: 10
     }, undefined);
 };
@@ -74590,7 +74696,7 @@ $RefreshReg$(_c, "SearchedResults");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","../../config/globalVariable":"juT5l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dmKFM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","../../config/globalVariable":"juT5l","./CardSkeletal":"7NgqF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dmKFM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8057 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -74607,6 +74713,8 @@ var _globalVariable = require("../../config/globalVariable");
 var _cards = require("./Cards");
 var _cardsDefault = parcelHelpers.interopDefault(_cards);
 var _reactRouterDom = require("react-router-dom");
+var _cardSkeletal = require("./CardSkeletal");
+var _cardSkeletalDefault = parcelHelpers.interopDefault(_cardSkeletal);
 var _s = $RefreshSig$();
 const NewsFeed = ()=>{
     _s();
@@ -74614,7 +74722,7 @@ const NewsFeed = ()=>{
     const [language, setLanguage] = (0, _globalVariable.useLanguage)();
     const [country, setCountry] = (0, _globalVariable.useCountry)();
     const params = {
-        q: "top AND recent",
+        q: "top OR headlines OR recent",
         category: "general",
         lang: language,
         country: country,
@@ -74627,7 +74735,11 @@ const NewsFeed = ()=>{
         (0, _fetchNewsDefault.default)("trends", params, setFeed);
     // console.log(feed);
     }, []);
-    if (feed.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    return feed?.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardSkeletalDefault.default), {}, void 0, false, {
+        fileName: "src/components/NewsFeed.js",
+        lineNumber: 30,
+        columnNumber: 35
+    }, undefined) : feed === undefined ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "error-message-container",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "error-message",
@@ -74637,31 +74749,30 @@ const NewsFeed = ()=>{
                 }, void 0, false, {
                     fileName: "src/components/NewsFeed.js",
                     lineNumber: 33,
-                    columnNumber: 21
+                    columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "Please Check Your Connection."
                 }, void 0, false, {
                     fileName: "src/components/NewsFeed.js",
                     lineNumber: 34,
-                    columnNumber: 21
+                    columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/NewsFeed.js",
             lineNumber: 32,
-            columnNumber: 17
+            columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/NewsFeed.js",
         lineNumber: 31,
-        columnNumber: 13
-    }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        columnNumber: 9
+    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
             fileName: "src/components/NewsFeed.js",
-            lineNumber: 43,
-            columnNumber: 13
+            lineNumber: 37,
+            columnNumber: 12
         }, undefined)
     }, void 0, false);
 };
@@ -74682,7 +74793,7 @@ $RefreshReg$(_c, "NewsFeed");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../config/fetchNews":"6daQQ","../../config/globalVariable":"juT5l","./Cards":"9rJEe","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9rJEe":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../config/fetchNews":"6daQQ","../../config/globalVariable":"juT5l","./Cards":"9rJEe","react-router-dom":"9xmpe","./CardSkeletal":"7NgqF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9rJEe":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1709 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -74698,6 +74809,8 @@ var _cardCss = require("../../public/static/css/Card.css");
 var _formatDate = require("../../config/formatDate");
 var _formatDateDefault = parcelHelpers.interopDefault(_formatDate);
 var _react = require("react");
+var _cardSkeletal = require("./CardSkeletal");
+var _cardSkeletalDefault = parcelHelpers.interopDefault(_cardSkeletal);
 var _s = $RefreshSig$();
 const Cards = ({ type })=>{
     _s();
@@ -74752,7 +74865,7 @@ const Cards = ({ type })=>{
         children: [
             getCurrentPageArticles()?.map((article, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "cards",
-                    onClick: ()=>navigate(`${type === "/" ? "" : "/search"}/${index}`),
+                    onClick: ()=>navigate(`${type === "/" ? "" : "/search"}/${(currentPage - 1) * articlesPerPage + index}`),
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             className: "card-img",
@@ -74760,7 +74873,7 @@ const Cards = ({ type })=>{
                             alt: article?.title
                         }, void 0, false, {
                             fileName: "src/components/Cards.js",
-                            lineNumber: 72,
+                            lineNumber: 73,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -74771,7 +74884,7 @@ const Cards = ({ type })=>{
                                     children: article?.title
                                 }, void 0, false, {
                                     fileName: "src/components/Cards.js",
-                                    lineNumber: 74,
+                                    lineNumber: 75,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -74779,7 +74892,7 @@ const Cards = ({ type })=>{
                                     children: article?.description
                                 }, void 0, false, {
                                     fileName: "src/components/Cards.js",
-                                    lineNumber: 75,
+                                    lineNumber: 76,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -74790,7 +74903,7 @@ const Cards = ({ type })=>{
                                             children: article?.source?.name
                                         }, void 0, false, {
                                             fileName: "src/components/Cards.js",
-                                            lineNumber: 77,
+                                            lineNumber: 78,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -74798,25 +74911,25 @@ const Cards = ({ type })=>{
                                             children: (0, _formatDateDefault.default)(article?.publishedAt)
                                         }, void 0, false, {
                                             fileName: "src/components/Cards.js",
-                                            lineNumber: 78,
+                                            lineNumber: 79,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Cards.js",
-                                    lineNumber: 76,
+                                    lineNumber: 77,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Cards.js",
-                            lineNumber: 73,
+                            lineNumber: 74,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, index, true, {
                     fileName: "src/components/Cards.js",
-                    lineNumber: 71,
+                    lineNumber: 72,
                     columnNumber: 17
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -74831,7 +74944,7 @@ const Cards = ({ type })=>{
                                 children: "Previous"
                             }, void 0, false, {
                                 fileName: "src/components/Cards.js",
-                                lineNumber: 85,
+                                lineNumber: 86,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -74840,13 +74953,13 @@ const Cards = ({ type })=>{
                                 children: "Next"
                             }, void 0, false, {
                                 fileName: "src/components/Cards.js",
-                                lineNumber: 86,
+                                lineNumber: 87,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Cards.js",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -74860,24 +74973,24 @@ const Cards = ({ type })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Cards.js",
-                            lineNumber: 89,
+                            lineNumber: 90,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Cards.js",
-                        lineNumber: 88,
+                        lineNumber: 89,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Cards.js",
-                lineNumber: 83,
+                lineNumber: 84,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Cards.js",
-        lineNumber: 69,
+        lineNumber: 70,
         columnNumber: 9
     }, undefined);
 };
@@ -74898,7 +75011,7 @@ $RefreshReg$(_c, "Cards");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","../../config/globalVariable":"juT5l","../../public/static/css/Card.css":"aMufU","../../config/formatDate":"8Xr6E","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"aMufU":[function() {},{}],"8Xr6E":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","../../config/globalVariable":"juT5l","../../public/static/css/Card.css":"aMufU","../../config/formatDate":"8Xr6E","react":"21dqq","./CardSkeletal":"7NgqF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"aMufU":[function() {},{}],"8Xr6E":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const formatDate = (isoDate)=>{

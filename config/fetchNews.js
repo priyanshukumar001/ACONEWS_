@@ -25,6 +25,7 @@ const fetchNews = async (type, params, setArticles) => {
         // console.log(data);
         setArticles(data.articles);
     } catch (error) {
+        setArticles(undefined);
         console.error('Error fetching data:', error);
     }
 };

@@ -9,12 +9,21 @@ import Category from "./components/Category";
 import DetailedContent from "./components/DetailedContent";
 import Cards from "./components/Cards";
 import ScrollToTop from "../config/ScrollToTop";
-import { useSearch } from "../config/globalVariable";
+import { useSearch, useFeed } from "../config/globalVariable";
+
+
 const App = () => {
+    const [feed, setFeed] = useFeed();
     const [searched, setSearched] = useSearch();
     const location = useLocation();
-    const hideNavPaths = [/^\/\d+$/, /^\/search\/\d+$/];
-    const HideNavigation = hideNavPaths.some((path) => path.test(location.pathname)) && searched && searched.length > 0;
+
+    let HideNavigation = false;
+    const isFeedPath = location.pathname.match(/^\/\d+$/) && feed?.length > 0;
+    const isSearchPath = location.pathname.match(/^\/search\/\d+$/) && searched?.length > 0;
+
+    if (isFeedPath || isSearchPath) {
+        HideNavigation = true;
+    }
 
     return (
         <>
