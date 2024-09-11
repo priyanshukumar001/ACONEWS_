@@ -15,7 +15,10 @@ app.use(express.json());
 
 const allowedOrigins = [
     'https://aconews-a4671.web.app',
+    'https://aconews-a4671.web.app/search',
     'http://localhost:1234',
+    'http://localhost:1234/search',
+
 ];
 
 app.use(cors({
@@ -31,9 +34,14 @@ app.use(cors({
             callback(new Error('Internal Server Error'));
         }
     },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Routes
 app.use('/api/news', newsRoutes);

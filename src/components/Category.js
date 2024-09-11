@@ -58,6 +58,7 @@ const Category = () => {
 
         try {
             await fetchNews('search', params, setSearched);
+            setCategory('');
             navigate('/search');
             window.scrollTo(0, 0);
         } catch (error) {

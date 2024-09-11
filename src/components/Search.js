@@ -52,11 +52,13 @@ const Search = () => {
     };
 
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
-        fetchNews("search", params, setSearched);
+        await fetchNews("search", params, setSearched);
         setLanguage(lang);
         setglobalCountry(country);
+        setCategory('');
+        setQuery('');
         navigate('/search');
     };
 

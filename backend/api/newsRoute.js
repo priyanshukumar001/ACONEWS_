@@ -12,7 +12,7 @@ news.post('/', async (req, res) => {
         const { q, category, lang, country, max, sortby } = req.body;
         console.log(q, category, lang, country, max, sortby);
         const response = await fetch(`${BASE_URL}/search?${new URLSearchParams({
-            q: q || 'TOP OR HEADLINES',
+            q: q || 'TOP',
             category: category || 'general',
             lang: lang || 'en',
             country: country || 'us',

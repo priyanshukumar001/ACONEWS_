@@ -34993,11 +34993,13 @@ const Search = ()=>{
         to: new Date(to),
         sortby: sortby
     };
-    const handleSearch = (e)=>{
+    const handleSearch = async (e)=>{
         e.preventDefault();
-        (0, _fetchNewsDefault.default)("search", params, setSearched);
+        await (0, _fetchNewsDefault.default)("search", params, setSearched);
         setLanguage(lang);
         setglobalCountry(country);
+        setCategory("");
+        setQuery("");
         navigate("/search");
     };
     const handleReset = (e)=>{
@@ -35024,7 +35026,7 @@ const Search = ()=>{
                         placeholder: "want to discover more?....."
                     }, void 0, false, {
                         fileName: "src/components/Search.js",
-                        lineNumber: 78,
+                        lineNumber: 80,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -35033,13 +35035,13 @@ const Search = ()=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "src/components/Search.js",
-                        lineNumber: 86,
+                        lineNumber: 88,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Search.js",
-                lineNumber: 77,
+                lineNumber: 79,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35051,7 +35053,7 @@ const Search = ()=>{
                         children: isOpen ? "Hide Filters \u263C" : "Show Filters \u2600"
                     }, void 0, false, {
                         fileName: "src/components/Search.js",
-                        lineNumber: 91,
+                        lineNumber: 93,
                         columnNumber: 21
                     }, undefined),
                     (isOpen || isLargeScreen) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -35068,7 +35070,7 @@ const Search = ()=>{
                                             children: "Category"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 102,
+                                            lineNumber: 104,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35076,7 +35078,7 @@ const Search = ()=>{
                                             children: "General"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 103,
+                                            lineNumber: 105,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35084,7 +35086,7 @@ const Search = ()=>{
                                             children: "World"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 104,
+                                            lineNumber: 106,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35092,7 +35094,7 @@ const Search = ()=>{
                                             children: "Nation"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 105,
+                                            lineNumber: 107,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35100,7 +35102,7 @@ const Search = ()=>{
                                             children: "Business"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 106,
+                                            lineNumber: 108,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35108,7 +35110,7 @@ const Search = ()=>{
                                             children: "Technology"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 107,
+                                            lineNumber: 109,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35116,7 +35118,7 @@ const Search = ()=>{
                                             children: "Entertainment"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 108,
+                                            lineNumber: 110,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35124,7 +35126,7 @@ const Search = ()=>{
                                             children: "Sports"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 109,
+                                            lineNumber: 111,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35132,7 +35134,7 @@ const Search = ()=>{
                                             children: "Science"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 110,
+                                            lineNumber: 112,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35140,13 +35142,13 @@ const Search = ()=>{
                                             children: "Health"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 111,
+                                            lineNumber: 113,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 101,
+                                    lineNumber: 103,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -35159,7 +35161,7 @@ const Search = ()=>{
                                             children: "Country"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 114,
+                                            lineNumber: 116,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35167,7 +35169,7 @@ const Search = ()=>{
                                             children: "Australia"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 115,
+                                            lineNumber: 117,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35175,7 +35177,7 @@ const Search = ()=>{
                                             children: "Brazil"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 116,
+                                            lineNumber: 118,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35183,7 +35185,7 @@ const Search = ()=>{
                                             children: "Canada"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 117,
+                                            lineNumber: 119,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35191,7 +35193,7 @@ const Search = ()=>{
                                             children: "China"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 118,
+                                            lineNumber: 120,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35199,7 +35201,7 @@ const Search = ()=>{
                                             children: "Egypt"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 119,
+                                            lineNumber: 121,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35207,7 +35209,7 @@ const Search = ()=>{
                                             children: "France"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 120,
+                                            lineNumber: 122,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35215,7 +35217,7 @@ const Search = ()=>{
                                             children: "Germany"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 121,
+                                            lineNumber: 123,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35223,7 +35225,7 @@ const Search = ()=>{
                                             children: "Greece"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 122,
+                                            lineNumber: 124,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35231,7 +35233,7 @@ const Search = ()=>{
                                             children: "Hong Kong"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 123,
+                                            lineNumber: 125,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35239,7 +35241,7 @@ const Search = ()=>{
                                             children: "India"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 124,
+                                            lineNumber: 126,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35247,7 +35249,7 @@ const Search = ()=>{
                                             children: "Ireland"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 125,
+                                            lineNumber: 127,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35255,7 +35257,7 @@ const Search = ()=>{
                                             children: "Israel"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 126,
+                                            lineNumber: 128,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35263,7 +35265,7 @@ const Search = ()=>{
                                             children: "Italy"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 127,
+                                            lineNumber: 129,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35271,7 +35273,7 @@ const Search = ()=>{
                                             children: "Japan"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 128,
+                                            lineNumber: 130,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35279,7 +35281,7 @@ const Search = ()=>{
                                             children: "Netherlands"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 129,
+                                            lineNumber: 131,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35287,7 +35289,7 @@ const Search = ()=>{
                                             children: "Norway"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 130,
+                                            lineNumber: 132,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35295,7 +35297,7 @@ const Search = ()=>{
                                             children: "Pakistan"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 131,
+                                            lineNumber: 133,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35303,7 +35305,7 @@ const Search = ()=>{
                                             children: "Peru"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 132,
+                                            lineNumber: 134,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35311,7 +35313,7 @@ const Search = ()=>{
                                             children: "Philippines"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 133,
+                                            lineNumber: 135,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35319,7 +35321,7 @@ const Search = ()=>{
                                             children: "Portugal"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 134,
+                                            lineNumber: 136,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35327,7 +35329,7 @@ const Search = ()=>{
                                             children: "Romania"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 135,
+                                            lineNumber: 137,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35335,7 +35337,7 @@ const Search = ()=>{
                                             children: "Russian Federation"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 136,
+                                            lineNumber: 138,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35343,7 +35345,7 @@ const Search = ()=>{
                                             children: "Singapore"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 137,
+                                            lineNumber: 139,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35351,7 +35353,7 @@ const Search = ()=>{
                                             children: "Spain"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 138,
+                                            lineNumber: 140,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35359,7 +35361,7 @@ const Search = ()=>{
                                             children: "Sweden"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 139,
+                                            lineNumber: 141,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35367,7 +35369,7 @@ const Search = ()=>{
                                             children: "Switzerland"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 140,
+                                            lineNumber: 142,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35375,7 +35377,7 @@ const Search = ()=>{
                                             children: "Taiwan"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 141,
+                                            lineNumber: 143,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35383,7 +35385,7 @@ const Search = ()=>{
                                             children: "Ukraine"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 142,
+                                            lineNumber: 144,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35391,7 +35393,7 @@ const Search = ()=>{
                                             children: "United Kingdom"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 143,
+                                            lineNumber: 145,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35399,13 +35401,13 @@ const Search = ()=>{
                                             children: "United States"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 144,
+                                            lineNumber: 146,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 113,
+                                    lineNumber: 115,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -35418,7 +35420,7 @@ const Search = ()=>{
                                             children: "Language"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 147,
+                                            lineNumber: 149,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35426,7 +35428,7 @@ const Search = ()=>{
                                             children: "Arabic"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 148,
+                                            lineNumber: 150,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35434,7 +35436,7 @@ const Search = ()=>{
                                             children: "Chinese"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 149,
+                                            lineNumber: 151,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35442,7 +35444,7 @@ const Search = ()=>{
                                             children: "Dutch"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 150,
+                                            lineNumber: 152,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35450,7 +35452,7 @@ const Search = ()=>{
                                             children: "English"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 151,
+                                            lineNumber: 153,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35458,7 +35460,7 @@ const Search = ()=>{
                                             children: "French"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 152,
+                                            lineNumber: 154,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35466,7 +35468,7 @@ const Search = ()=>{
                                             children: "German"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 153,
+                                            lineNumber: 155,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35474,7 +35476,7 @@ const Search = ()=>{
                                             children: "Greek"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 154,
+                                            lineNumber: 156,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35482,7 +35484,7 @@ const Search = ()=>{
                                             children: "Hebrew"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 155,
+                                            lineNumber: 157,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35490,7 +35492,7 @@ const Search = ()=>{
                                             children: "Hindi"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 156,
+                                            lineNumber: 158,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35498,7 +35500,7 @@ const Search = ()=>{
                                             children: "Italian"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 157,
+                                            lineNumber: 159,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35506,7 +35508,7 @@ const Search = ()=>{
                                             children: "Japanese"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 158,
+                                            lineNumber: 160,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35514,7 +35516,7 @@ const Search = ()=>{
                                             children: "Malayalam"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 159,
+                                            lineNumber: 161,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35522,7 +35524,7 @@ const Search = ()=>{
                                             children: "Marathi"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 160,
+                                            lineNumber: 162,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35530,7 +35532,7 @@ const Search = ()=>{
                                             children: "Norwegian"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 161,
+                                            lineNumber: 163,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35538,7 +35540,7 @@ const Search = ()=>{
                                             children: "Portuguese"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 162,
+                                            lineNumber: 164,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35546,7 +35548,7 @@ const Search = ()=>{
                                             children: "Romanian"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 163,
+                                            lineNumber: 165,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35554,7 +35556,7 @@ const Search = ()=>{
                                             children: "Russian"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 164,
+                                            lineNumber: 166,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35562,7 +35564,7 @@ const Search = ()=>{
                                             children: "Spanish"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 165,
+                                            lineNumber: 167,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35570,7 +35572,7 @@ const Search = ()=>{
                                             children: "Swedish"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 166,
+                                            lineNumber: 168,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35578,7 +35580,7 @@ const Search = ()=>{
                                             children: "Tamil"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 167,
+                                            lineNumber: 169,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35586,7 +35588,7 @@ const Search = ()=>{
                                             children: "Telugu"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 168,
+                                            lineNumber: 170,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35594,13 +35596,13 @@ const Search = ()=>{
                                             children: "Ukrainian"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 169,
+                                            lineNumber: 171,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 146,
+                                    lineNumber: 148,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -35613,7 +35615,7 @@ const Search = ()=>{
                                     onBlur: (e)=>e.target.type = "text"
                                 }, void 0, false, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 171,
+                                    lineNumber: 173,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -35626,7 +35628,7 @@ const Search = ()=>{
                                     onBlur: (e)=>e.target.type = "text"
                                 }, void 0, false, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 177,
+                                    lineNumber: 179,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -35639,7 +35641,7 @@ const Search = ()=>{
                                             children: "Sort By"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 184,
+                                            lineNumber: 186,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35647,7 +35649,7 @@ const Search = ()=>{
                                             children: "Latest"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 185,
+                                            lineNumber: 187,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -35655,13 +35657,13 @@ const Search = ()=>{
                                             children: "Most Relevant"
                                         }, void 0, false, {
                                             fileName: "src/components/Search.js",
-                                            lineNumber: 186,
+                                            lineNumber: 188,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 183,
+                                    lineNumber: 185,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -35670,26 +35672,26 @@ const Search = ()=>{
                                     children: "Reset"
                                 }, void 0, false, {
                                     fileName: "src/components/Search.js",
-                                    lineNumber: 188,
+                                    lineNumber: 190,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Search.js",
-                            lineNumber: 99,
+                            lineNumber: 101,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Search.js",
-                lineNumber: 89,
+                lineNumber: 91,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Search.js",
-        lineNumber: 75,
+        lineNumber: 77,
         columnNumber: 9
     }, undefined);
 };
@@ -35872,17 +35874,19 @@ var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
 const BASE_URL = "https://aconews-backend.vercel.app";
 const fetchNews = async (type, params, setArticles)=>{
     const subRoot = type === "trends" ? "news" : "search";
+    console.log(params);
     try {
         const response = await fetch(`${BASE_URL}/api/${subRoot}`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify(params)
         });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        // console.log(data);
+        console.log(data.articles);
         setArticles(data.articles);
     } catch (error) {
         setArticles(undefined);
@@ -75123,6 +75127,7 @@ const Category = ()=>{
         };
         try {
             await (0, _fetchNewsDefault.default)("search", params, setSearched);
+            setCategory("");
             navigate("/search");
             window.scrollTo(0, 0);
         } catch (error) {
@@ -75145,17 +75150,17 @@ const Category = ()=>{
                         children: category.name
                     }, void 0, false, {
                         fileName: "src/components/Category.js",
-                        lineNumber: 81,
+                        lineNumber: 82,
                         columnNumber: 25
                     }, undefined)
                 }, index, false, {
                     fileName: "src/components/Category.js",
-                    lineNumber: 75,
+                    lineNumber: 76,
                     columnNumber: 21
                 }, undefined))
         }, void 0, false, {
             fileName: "src/components/Category.js",
-            lineNumber: 73,
+            lineNumber: 74,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
