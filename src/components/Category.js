@@ -46,7 +46,7 @@ const Category = () => {
         setSearched([]);
 
         const params = {
-            q: category,
+            q: updatedCategory,
             category: updatedCategory,
             lang: '',
             country: '',
@@ -57,10 +57,10 @@ const Category = () => {
         };
 
         try {
+            window.scrollTo(0, 0);
             await fetchNews('search', params, setSearched);
             setCategory('');
             navigate('/search');
-            window.scrollTo(0, 0);
         } catch (error) {
             console.error('Error fetching news:', error);
         }

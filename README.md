@@ -137,10 +137,6 @@ The project is hosted on Firebase. Follow these steps to deploy:
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Contact
 
 For any inquiries, please contact priyanshukashyap1709@gmail.com.

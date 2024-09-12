@@ -8,7 +8,7 @@ const fetchNews = async (type, params, setArticles) => {
 
     const subRoot = (type === 'trends') ? "news" : "search";
 
-    console.log(params);
+    // console.log(params);
     try {
         const response = await fetch(`${BASE_URL}/api/${subRoot}`, {
             method: 'POST',
@@ -24,7 +24,7 @@ const fetchNews = async (type, params, setArticles) => {
         }
 
         const data = await response.json();
-        console.log(data.articles);
+        // console.log(data.articles);
         setArticles(data.articles);
     } catch (error) {
         setArticles(undefined);

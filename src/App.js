@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
 import Body from "./components/Body";
 import ErrorPage from "./components/ErrorPage";
@@ -24,6 +25,10 @@ const App = () => {
     if (isFeedPath || isSearchPath) {
         HideNavigation = true;
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     return (
         <>

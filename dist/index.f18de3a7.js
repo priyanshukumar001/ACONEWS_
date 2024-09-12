@@ -27265,38 +27265,43 @@ const App = ()=>{
     const isFeedPath = location.pathname.match(/^\/\d+$/) && feed?.length > 0;
     const isSearchPath = location.pathname.match(/^\/search\/\d+$/) && searched?.length > 0;
     if (isFeedPath || isSearchPath) HideNavigation = true;
+    (0, _react.useEffect)(()=>{
+        window.scrollTo(0, 0);
+    }, [
+        location
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _scrollToTopDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 31,
+                    lineNumber: 36,
                     columnNumber: 17
                 }, undefined),
                 !HideNavigation && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 32,
+                    lineNumber: 37,
                     columnNumber: 37
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 33,
+                    lineNumber: 38,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _categoryDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 34,
+                    lineNumber: 39,
                     columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/App.js",
-            lineNumber: 30,
+            lineNumber: 35,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
 };
-_s(App, "iTVYRNs2wCVOlqn6ceYHSeSX1uw=", false, function() {
+_s(App, "tORnY2j+g1jnluKhIp3D7gO0McU=", false, function() {
     return [
         (0, _globalVariable.useFeed),
         (0, _globalVariable.useSearch),
@@ -27309,7 +27314,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
         path: "/",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 43,
+            lineNumber: 48,
             columnNumber: 18
         }, undefined),
         children: [
@@ -27317,7 +27322,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 47,
+                    lineNumber: 52,
                     columnNumber: 26
                 }, undefined),
                 children: [
@@ -27325,7 +27330,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                         path: "",
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _newsFeedDefault.default), {}, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 51,
+                            lineNumber: 56,
                             columnNumber: 34
                         }, undefined),
                         children: [
@@ -27335,7 +27340,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 55,
+                                    lineNumber: 60,
                                     columnNumber: 42
                                 }, undefined)
                             },
@@ -27345,7 +27350,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 59,
+                                    lineNumber: 64,
                                     columnNumber: 42
                                 }, undefined)
                             }
@@ -27355,7 +27360,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                         path: "search",
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchedResultsDefault.default), {}, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 65,
+                            lineNumber: 70,
                             columnNumber: 34
                         }, undefined),
                         children: [
@@ -27365,7 +27370,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/search"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 69,
+                                    lineNumber: 74,
                                     columnNumber: 42
                                 }, undefined)
                             },
@@ -27375,7 +27380,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                                     type: "/search"
                                 }, void 0, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 73,
+                                    lineNumber: 78,
                                     columnNumber: 42
                                 }, undefined)
                             }
@@ -27388,7 +27393,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
     {
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorPageDefault.default), {}, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 83,
+            lineNumber: 88,
             columnNumber: 23
         }, undefined)
     }
@@ -35874,7 +35879,7 @@ var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
 const BASE_URL = "https://aconews-backend.vercel.app";
 const fetchNews = async (type, params, setArticles)=>{
     const subRoot = type === "trends" ? "news" : "search";
-    console.log(params);
+    // console.log(params);
     try {
         const response = await fetch(`${BASE_URL}/api/${subRoot}`, {
             method: "POST",
@@ -35886,7 +35891,7 @@ const fetchNews = async (type, params, setArticles)=>{
         });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        console.log(data.articles);
+        // console.log(data.articles);
         setArticles(data.articles);
     } catch (error) {
         setArticles(undefined);
@@ -75116,7 +75121,7 @@ const Category = ()=>{
         setCategory(updatedCategory);
         setSearched([]);
         const params = {
-            q: category,
+            q: updatedCategory,
             category: updatedCategory,
             lang: "",
             country: "",
@@ -75126,10 +75131,10 @@ const Category = ()=>{
             sortby: "publishedAt"
         };
         try {
+            window.scrollTo(0, 0);
             await (0, _fetchNewsDefault.default)("search", params, setSearched);
             setCategory("");
             navigate("/search");
-            window.scrollTo(0, 0);
         } catch (error) {
             console.error("Error fetching news:", error);
         }
